@@ -5,7 +5,7 @@ function SustainabilityScore() {
   const getChartOptions = () => {
     return {
       series: [90, 85, 70],
-      colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
+      colors: ["#25ac00", "#d67b35", "#01870e"],
       chart: {
         height: "380px",
         width: "100%",
@@ -17,7 +17,7 @@ function SustainabilityScore() {
       plotOptions: {
         radialBar: {
           track: {
-            background: '#E5E7EB',
+            background: "#E5E7EB",
           },
           dataLabels: {
             show: false,
@@ -25,7 +25,7 @@ function SustainabilityScore() {
           hollow: {
             margin: 0,
             size: "32%",
-          }
+          },
         },
       },
       grid: {
@@ -38,7 +38,11 @@ function SustainabilityScore() {
           bottom: -20,
         },
       },
-      labels: ["Sustainability Score", "Carbon Footprint", "Distance Travelled"],
+      labels: [
+        "Sustainability Score",
+        "Carbon Footprint",
+        "Distance Travelled",
+      ],
       legend: {
         show: true,
         position: "bottom",
@@ -54,18 +58,20 @@ function SustainabilityScore() {
         show: false,
         labels: {
           formatter: function (value) {
-            return value + '%';
-          }
-        }
-      }
+            return value + "%";
+          },
+        },
+      },
     };
   };
 
   return (
-    <div className="flex-initial px-10 py-5 rounded-lg shadow-md container-sm mx-auto hover:shadow-2xl">
+    <div className="flex-initial px-10 py-5 rounded-lg shadow-md container-sm mx-auto ">
       {/* max-w-lg w-full bg-white rounded-lg shadow p-4 md:p-6 */}
       {/* flex-initial px-10 shadow-md container-sm mx-auto */}
-      <h2 className="font-bold text-3xl p-4">Sustainability Score</h2>{" "}
+      <h2 className="font-bold text-3xl p-4 bg-clip-text text-transparent bg-gradient-to-r from-green-800 to-green-600">
+        Sustainability Score
+      </h2>{" "}
       {/* Updated title */}
       <div className="p-4">
         <ReactApexChart

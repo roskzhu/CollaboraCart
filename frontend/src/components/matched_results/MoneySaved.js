@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { Link } from "react-router-dom";
 
 function MoneySaved() {
   const series = [
@@ -41,9 +42,11 @@ function MoneySaved() {
       <div className="flex justify-between mb-5">
         <div className="pt-40 pb-24">
           <h5 className="text-center leading-none text-8xl font-bold text-white pb-2">
-          {"\n"} $1,423 {"\n"}
+            {"\n"} $1,423 {"\n"}
           </h5>
-          <p className="text-base font-normal text-white">Saved this purchase</p>
+          <p className="text-base font-normal text-white">
+            Saved this purchase
+          </p>
         </div>
         <div className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-300 text-center">
           23%
@@ -61,9 +64,9 @@ function MoneySaved() {
 
       <div className="grid grid-cols-1 items-center border-gray-200 border-t justify-between mt-5">
         <div className="flex justify-between items-center pt-5">
-          <a
-            href="#"
-            className="uppercase text-sm font-semibold flex items-center rounded-lg text-red-300 hover:text-red-500 hover:bg-gray-100 px-3 py-2"
+          <Link
+            to="/dashboard"
+            className="uppercase text-sm font-semibold flex items-center rounded-lg text-white hover:text-blue-800 hover:bg-gray-100 px-3 py-2"
           >
             Back to Dashboard
             <svg className="w-2.5 h-2.5 ml-1.5" viewBox="0 0 6 10">
@@ -75,7 +78,7 @@ function MoneySaved() {
                 d="m1 9 4-4-4-4"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

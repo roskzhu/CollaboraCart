@@ -5,7 +5,8 @@ import team from "../assets/teams.svg";
 import SustainabilityScore from "../components/matched_results/SustainabilityScore";
 import MoneySaved from "../components/matched_results/MoneySaved";
 import MatchedResults from "../components/matched_results/Results";
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const MatchPage = () => {
   const location = useLocation();
@@ -44,13 +45,21 @@ const MatchPage = () => {
     };
 
     // if (location.state) {
-      fetchOptimalMatch();
+    fetchOptimalMatch();
     // }
   }, [location.state]);
 
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
+
   return (
-    <div className="bg-white h-screen flex flex-col font-poppins ml-4 mt-4w ot ">
-      <section className="relative pt-36">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      className="bg-white h-screen flex flex-col font-poppins ml-4 mt-4w ot "
+    >
+      <section className="relative pt-20">
         <div
           className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1"
           aria-hidden="true"
@@ -66,28 +75,17 @@ const MatchPage = () => {
         </div>
 
         <div className="text-center max-w-6xl mx-auto px-4 sm:px-6">
-          {/* <div className="text-center pb-12 md:pb-16"> */}
-            <h1
-              className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-8"
-              data-aos="zoom-y-out"
-            >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
-                Match Results 
-              </span>
-            </h1>
-            <p
-              className="text-xl text-gray-700 mb-8 "
-              data-aos="zoom-y-out"
-              data-aos-delay="150"
-            >
-              Empower your business by joining forces with others.
-            </p>
-            <div className="w-full max-w-5xl p-5 mx-auto gap-5 columns-2 space-y-5">
-              {/* widgets here */}
-              <MoneySaved/>
-              <SustainabilityScore/>
-            <div>
-            </div>
+          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800 text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-5">
+            Match Results
+          </h1>
+          <p className="text-xl text-gray-700 mb-8 ">
+            <i>Empower your business by joining forces with others.</i>
+          </p>
+          <div className="w-full max-w-5xl p-5 mx-auto gap-5 columns-2 space-y-5">
+            {/* widgets here */}
+            <MoneySaved />
+            <SustainabilityScore />
+            <div></div>
           </div>
           {optimalMatch ? (
             <div>
@@ -102,12 +100,12 @@ const MatchPage = () => {
               {/* Add more display fields as required */}
             </div>
           ) : (
-            <MatchedResults/>    
-            )}
+            <MatchedResults />
+          )}
         </div>
       </section>
     </div>
-    );
-  };
+  );
+};
 
 export default MatchPage;
