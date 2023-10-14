@@ -3,6 +3,7 @@ import Aos from "aos";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import team from "../assets/teams.svg";
+import BusinessForm from "../pages/BusinessForm";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const Hero = () => {
             >
               <Link
                 className="btn text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 py-3 px-6 rounded-full transition-transform transform hover:scale-105"
-                to="/register"
+                to="/BusinessSignUp"
               >
                 Get started
               </Link>

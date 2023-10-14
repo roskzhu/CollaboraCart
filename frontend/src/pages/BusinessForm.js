@@ -31,7 +31,7 @@ const BusinessForm = () => {
 
   return (
     <div className="bg-white h-screen flex flex-col justify-center items-center font-inter">
-      <h1 className="text-3xl text-black font-bold mb-4">Sign Up as a Small Business</h1>
+      <h1 className="text-3xl text-black font-bold mb-4">Tell Us More About Your Business</h1>
       <p className="text-gray-500 text-base pb-10">Fill in the fields below.</p>
     
       <form onSubmit={handleSubmit}>
