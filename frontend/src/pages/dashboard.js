@@ -5,6 +5,7 @@ import CurrentStockCard from "../components/dashboard/CurrentStock";
 import PortfolioCard from "../components/dashboard/PortfolioCard";
 import PricingTrendsCard from "../components/dashboard/PricingTrend";
 import TransactionHistoryCard from "../components/dashboard/TransactionHistory";
+import InventoryTable from "../components/inventory";
 
 const Dashboard = () => {
   return (
@@ -17,11 +18,14 @@ const Dashboard = () => {
         <WelcomeBanner />
       </div>
 
-      <div className="w-full max-w-5xl p-5 pb-10 mx-auto mb-10 gap-5 columns-2 space-y-5">
+      <div className="w-full max-w-5xl p-5 pb-10 mx-auto gap-5 columns-2 space-y-5">
         <PricingTrendsCard />
         <CurrentStockCard />
         <PortfolioCard />
         <TransactionHistoryCard />
+      </div>
+      <div>
+        <InventoryTable />
       </div>
     </div>
   );

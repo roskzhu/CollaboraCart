@@ -29,7 +29,8 @@ const InventoryTable = () => {
   };
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-3xl mx-auto mt-20">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full max-w-4xl mx-auto mb-20">
+      <h1 className="text-2xl font-bold mb-2">Stock</h1>
       <table className="w-full text-sm text-left text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
