@@ -14,8 +14,6 @@ def get_location_coordinates(location_name):
         return None
 
 # Supplier's pricing structure
-
-
 def get_supplier_price(quantity):
     """Determine unit price based on quantity."""
     if quantity < 10:
@@ -55,7 +53,12 @@ def compute_distance(location1, location2):
 
 
 def find_optimal_match(new_business):
-    coords = get_location_coordinates(new_business['location'])
+    if new_business is not None and 'location' in new_business:
+        coords = get_location_coordinates(new_business['location'])
+    else:
+        print("Error: 'location' not found in the new business data or new_business is None.")
+        return None
+
     if not coords:
         print(f"Failed to get coordinates for {new_business['location']}")
         return None

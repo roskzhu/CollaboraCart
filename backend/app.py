@@ -5,8 +5,8 @@ import sqlite3
 from utils.matching import find_optimal_match
 
 app = Flask(__name__)
-# CORS(app)
 CORS(app, resources={r"/*": {"origins": "*"}})
+# CORS(app)
 
 
 # Business Database setup
@@ -105,12 +105,16 @@ def get_optimal_match():
     match = find_optimal_match(data)
 
     if match:
-        return jsonify({
+        response = jsonify({
             "message": "Match found!",
             "match": match
-        }), 200
+        })
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response, 200
     else:
-        return jsonify({"message": "No match found."}), 200
+        response = jsonify({"message": "No match found."})
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response, 200
 
 
 if __name__ == '__main__':
