@@ -33,7 +33,7 @@ const NavBar = () => {
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
-                  to=""
+                  to="/signin"
                   className="text-lg text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out rounded-full"
                 >
                   Sign in
@@ -42,7 +42,7 @@ const NavBar = () => {
               <li>
                 <Link
                   to="/signup"
-                  className="text-lg text-white bg-gradient-to-r from-blue-600 to-teal-400 hover:from-blue-700 hover:to-teal-500 px-5 py-2 flex items-center transition duration-150 ease-in-out ml-3 rounded-full"
+                  className="text-lg text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 px-5 py-2 flex items-center transition duration-150 ease-in-out ml-3 rounded-full"
                 >
                   <span>Sign up</span>
                   <svg

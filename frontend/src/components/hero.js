@@ -2,12 +2,13 @@ import React from "react";
 import Aos from "aos";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import team from "../assets/teams.svg";
 
 const Hero = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <section className="relative pt-48">
+      <section className="relative pt-28">
         <div
           className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1"
           aria-hidden="true"
@@ -29,7 +30,7 @@ const Hero = () => {
               data-aos="zoom-y-out"
             >
               Collabora
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
                 Cart
               </span>
             </h1>
@@ -47,7 +48,7 @@ const Hero = () => {
               data-aos-delay="300"
             >
               <Link
-                className="btn text-white bg-gradient-to-r from-blue-600 to-teal-400 hover:from-blue-700 hover:to-teal-500 py-3 px-6 rounded-full transition-transform transform hover:scale-105"
+                className="btn text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 py-3 px-6 rounded-full transition-transform transform hover:scale-105"
                 to="/register"
               >
                 Get started
@@ -58,6 +59,14 @@ const Hero = () => {
               >
                 Learn more
               </a>
+            </div>
+            <div>
+              <img
+                src={team}
+                width={500}
+                className="h-auto mx-auto mt-20"
+                alt="Team"
+              />
             </div>
           </div>
         </div>
