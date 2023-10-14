@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.tooltip {
+  width: 150px; /* Adjust width as needed */
+  display: none; /* By default, the tooltip is not shown */
+}
+
+.text-red-600:hover .tooltip {
+  display: block; /* Show tooltip when hovering over the parent container */
+}
