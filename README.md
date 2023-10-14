@@ -5,7 +5,7 @@
       </ul>
     </div>
     <h3>A Collaborative Supply Ordering Application</h3>
-    <h4><i>Optimize your unit costs, elevate your bottom line</i></h4>
+    <h4><i>Optimize your per-unit costs, elevate your bottom line</i></h4>
        <br>
     <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
     <img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/>
@@ -16,6 +16,14 @@
 </div>
 
 <img width="1512" alt="Screenshot 2023-10-14 at 10 02 53 AM" src="https://github.com/roskzhu/CollaboraCart/assets/66566975/bcee6c86-d3d3-4215-af91-4c1f97e0043e">
+
+## What is CollaboraCart?
+
+CollaboraCart is a groundbreaking supply ordering platform tailored for small businesses. Recognizing the challenges faced by smaller enterprises when ordering supplies in limited quantities, CollaboraCart seeks to bridge the gap. 
+
+Small businesses often grapple with higher per-unit costs due to their lower volume requirements, placing them at an economic disadvantage compared to larger corporations that can leverage economies of scale. CollaboraCart addresses this disparity by pairing like-minded small businesses with similar supply needs. By amalgamating their orders, these businesses can attain larger combined order volumes, unlocking better per-unit pricing and simulating the buying power of much larger organizations.
+
+By democratizing access to better pricing, CollaboraCart isn't just facilitating transactions—it's fostering a community of collaboration among small businesses.
 
 ## Prerequisites
 
