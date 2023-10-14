@@ -8,7 +8,7 @@ const Hero = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <section className="relative pt-28">
+      <section className="relative pt-36">
         <div
           className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1"
           aria-hidden="true"
