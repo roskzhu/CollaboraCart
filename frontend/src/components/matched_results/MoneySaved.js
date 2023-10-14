@@ -68,7 +68,9 @@ function MoneySaved() {
             to="/dashboard"
             className="uppercase text-sm font-semibold flex items-center rounded-lg text-white hover:text-blue-800 hover:bg-gray-100 px-3 py-2"
           >
+            <Link to="/dashboard">
             Back to Dashboard
+            </Link>
             <svg className="w-2.5 h-2.5 ml-1.5" viewBox="0 0 6 10">
               <path
                 stroke="currentColor"
