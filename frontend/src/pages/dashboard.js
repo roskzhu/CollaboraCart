@@ -13,6 +13,7 @@ const Dashboard = () => {
       <h1 className="align-text-top pl-6 pt-5 bg-gradient-to-r from-indigo-600 to-emerald-500 text-3xl font-bold mb-10 text-transparent bg-clip-text">
         CollaboraCart
       </h1>
+
       <div className="px-3 sm:px-6 lg:px-8 py-4 w-full max-w-8xl mx-auto">
         {/* Welcome banner */}
         <WelcomeBanner />
