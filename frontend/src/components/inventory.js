@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const InventoryTable = () => {
   const initialData = [
@@ -24,13 +25,18 @@ const InventoryTable = () => {
     setEditIndex(null);
   };
 
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Enter") {
+      handleSave(index);
+    }
+  };
+
   const handleInputChange = (e, field) => {
     setTempEdit({ ...tempEdit, [field]: e.target.value });
   };
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full max-w-4xl mx-auto mb-20">
-      <h1 className="text-2xl font-bold mb-2">Stock</h1>
       <table className="w-full text-sm text-left text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
@@ -63,16 +69,26 @@ const InventoryTable = () => {
                 {editIndex === index ? (
                   <input
                     value={tempEdit.item}
+                    onKeyDown={(e) => handleKeyDown(e, "item")}
                     onChange={(e) => handleInputChange(e, "item")}
                   />
                 ) : (
-                  product.item
+                  <>
+                    {product.item}
+                    {/* Alert icon for low stock */}
+                    {product.quantity < 30 && (
+                      <span className="text-red-600 ml-2 cursor-pointer relative">
+                        <Link to="/ItemSubmission">⚠️</Link>
+                      </span>
+                    )}
+                  </>
                 )}
               </th>
               <td className="px-6 py-4">
                 {editIndex === index ? (
                   <input
                     value={tempEdit.category}
+                    onKeyDown={(e) => handleKeyDown(e, "category")}
                     onChange={(e) => handleInputChange(e, "category")}
                   />
                 ) : (
@@ -84,6 +100,7 @@ const InventoryTable = () => {
                   <input
                     type="number"
                     value={tempEdit.quantity}
+                    onKeyDown={(e) => handleKeyDown(e, "quantity")}
                     onChange={(e) => handleInputChange(e, "quantity")}
                   />
                 ) : (
