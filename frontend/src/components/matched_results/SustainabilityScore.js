@@ -65,7 +65,7 @@ function SustainabilityScore() {
     <div className="flex-initial px-10 py-5 rounded-lg shadow-md container-sm mx-auto hover:shadow-2xl">
       {/* max-w-lg w-full bg-white rounded-lg shadow p-4 md:p-6 */}
       {/* flex-initial px-10 shadow-md container-sm mx-auto */}
-      <h2 className="font-bold text-2xl p-4">Inventory</h2>{" "}
+      <h2 className="font-bold text-3xl p-4">Sustainability Score</h2>{" "}
       {/* Updated title */}
       <div className="p-4">
         <ReactApexChart

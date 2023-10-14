@@ -37,15 +37,15 @@ function MoneySaved() {
   };
 
   return (
-    <div className="max-w-lg w-full bg-white rounded-lg shadow p-4 md:p-6">
+    <div className="max-w-lg w-full bg-white rounded-lg shadow p-4 md:p-6 bg-gradient-to-br from-blue-700 to-blue-400">
       <div className="flex justify-between mb-5">
-        <div>
-          <h5 className="leading-none text-3xl font-bold text-gray-900 pb-2">
-            $12,423
+        <div className="pt-40 pb-24">
+          <h5 className="text-center leading-none text-8xl font-bold text-white pb-2">
+          {"\n"} $1,423 {"\n"}
           </h5>
-          <p className="text-base font-normal text-gray-500">Sales this week</p>
+          <p className="text-base font-normal text-white">Saved this purchase</p>
         </div>
-        <div className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 text-center">
+        <div className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-300 text-center">
           23%
           <svg className="w-3 h-3 ml-1" viewBox="0 0 10 14">
             <path
@@ -59,46 +59,13 @@ function MoneySaved() {
         </div>
       </div>
 
-      <div id="grid-chart">
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="area"
-          height={200}
-        />
-      </div>
-
       <div className="grid grid-cols-1 items-center border-gray-200 border-t justify-between mt-5">
         <div className="flex justify-between items-center pt-5">
-          {/* Dropdown component here */}
-          <div className="relative inline-block text-left">
-            <button className="text-sm font-medium text-gray-500 hover:text-gray-900 flex items-center">
-              Last 7 days
-              <svg className="w-2.5 ml-2" viewBox="0 0 10 6">
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 1 4 4 4-4"
-                />
-              </svg>
-            </button>
-            <div className="origin-top-right z-10 absolute mt-2 w-56 rounded-md shadow-lg bg-white">
-              <div className="rounded-md ring-1 ring-black ring-opacity-5">
-                <div className="py-1" role="menu" aria-orientation="vertical">
-                  {/* Dropdown items here */}
-                  {/* ... */}
-                </div>
-              </div>
-            </div>
-          </div>
-
           <a
             href="#"
-            className="uppercase text-sm font-semibold flex items-center rounded-lg text-blue-600 hover:text-blue-700 hover:bg-gray-100 px-3 py-2"
+            className="uppercase text-sm font-semibold flex items-center rounded-lg text-red-300 hover:text-red-500 hover:bg-gray-100 px-3 py-2"
           >
-            Sales Report
+            Back to Dashboard
             <svg className="w-2.5 h-2.5 ml-1.5" viewBox="0 0 6 10">
               <path
                 stroke="currentColor"

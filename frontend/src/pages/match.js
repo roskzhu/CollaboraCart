@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import team from "../assets/teams.svg";
 import SustainabilityScore from "../components/matched_results/SustainabilityScore";
 import MoneySaved from "../components/matched_results/MoneySaved";
+import MatchedResults from "../components/matched_results/Results";
 
 
 const MatchPage = () => {
@@ -64,8 +65,8 @@ const MatchPage = () => {
           </svg>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center pb-12 md:pb-16">
+        <div className="text-center max-w-6xl mx-auto px-4 sm:px-6">
+          {/* <div className="text-center pb-12 md:pb-16"> */}
             <h1
               className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-8"
               data-aos="zoom-y-out"
@@ -81,50 +82,31 @@ const MatchPage = () => {
             >
               Empower your business by joining forces with others.
             </p>
+            <div className="w-full max-w-5xl p-5 mx-auto gap-5 columns-2 space-y-5">
               {/* widgets here */}
               <MoneySaved/>
               <SustainabilityScore/>
-              <SustainabilityScore/>            
             <div>
-              {/* insert text results here */}
-              <img
-                src={team}
-                width={500}
-                className="h-auto mx-auto mt-20"
-                alt="Team"
-              />
             </div>
           </div>
+          {optimalMatch ? (
+            <div>
+              {/* Display optimal match details here */}
+              <p>Item Name: {optimalMatch.item}</p>
+              <p>Quantity: {optimalMatch.quantity}</p>
+              <p>Budget: {optimalMatch.budget}</p>
+              <p>Location: {optimalMatch.location}</p>
+              <p>Business Sector: {optimalMatch.business_sector}</p>
+              <p>Combined Quantity: {optimalMatch.combined_quantity}</p>
+              <p>Savings: {optimalMatch.savings}</p>
+              {/* Add more display fields as required */}
+            </div>
+          ) : (
+            <MatchedResults/>    
+            )}
         </div>
       </section>
     </div>
-    // <div className="p-4">
-    //   <h1 className="text-xl font-bold mb-4">Match Result</h1>
-    //   {optimalMatch ? (
-    //     <div>
-    //       {/* Display optimal match details here */}
-    //       <p>Item Name: {optimalMatch.item}</p>
-    //       <p>Quantity: {optimalMatch.quantity}</p>
-    //       <p>Budget: {optimalMatch.budget}</p>
-    //       <p>Location: {optimalMatch.location}</p>
-    //       <p>Business Sector: {optimalMatch.business_sector}</p>
-    //       <p>Combined Quantity: {optimalMatch.combined_quantity}</p>
-    //       <p>Savings: {optimalMatch.savings}</p>
-    //       {/* Add more display fields as required */}
-    //     </div>
-    //   ) : (
-    //     <div>
-    //       {/****/}
-    //       <p>Item Name: Printer</p>
-    //       <p>Quantity: 5</p>
-    //       <p>Budget: 1000</p>
-    //       <p>Location: Berlin, Germany</p>
-    //       <p>Business Sector: IT</p>
-    //       <p>Combined Quantity: 9</p>
-    //       <p>Savings: 1800</p>
-    //     </div>
-    //     )}
-    //   </div>
     );
   };
 

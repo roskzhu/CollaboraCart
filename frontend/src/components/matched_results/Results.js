@@ -38,18 +38,8 @@ function MatchedResults() {
 
   return (
     <div className="flex-initial px-10 py-5 rounded-lg shadow-md container-sm mx-auto hover:shadow-2xl mb-20">
-      {/* max-w-lg w-full bg-white rounded-lg shadow p-4 md:p-6 */}
-      {/* flex-initial px-10 py-5 rounded-lg shadow-md container-sm mx-auto hover:shadow-2xl */}
       <h2 className="font-bold text-4xl p-4">Summary of Match Results </h2>{" "}
       <p className="text-base font-normal text-gray-500 mb-5">
-        {/* <p><span className="text-black text-2xl font-bold">Item Name: </span>
-          Printer</p>
-            <p>Quantity: 5</p>
-            <p>Budget: 1000</p>
-            <p>Location: Berlin, Germany</p>
-            <p>Business Sector: IT</p>
-            <p>Combined Quantity: 9</p>
-            <p>Savings: 1800</p>  */}
       <div className="relative overflow-x-auto">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-white-700 dark:text-black-400">
@@ -147,31 +137,3 @@ function MatchedResults() {
   );
 }
 export default MatchedResults;
-
-    // <div className="p-4">
-    //   <h1 className="text-xl font-bold mb-4">Match Result</h1>
-    //   {optimalMatch ? (
-    //     <div>
-    //       {/* Display optimal match details here */}
-    //       <p>Item Name: {optimalMatch.item}</p>
-    //       <p>Quantity: {optimalMatch.quantity}</p>
-    //       <p>Budget: {optimalMatch.budget}</p>
-    //       <p>Location: {optimalMatch.location}</p>
-    //       <p>Business Sector: {optimalMatch.business_sector}</p>
-    //       <p>Combined Quantity: {optimalMatch.combined_quantity}</p>
-    //       <p>Savings: {optimalMatch.savings}</p>
-    //       {/* Add more display fields as required */}
-    //     </div>
-    //   ) : (
-    //     <div>
-    //       {/****/}
-    //       <p>Item Name: Printer</p>
-    //       <p>Quantity: 5</p>
-    //       <p>Budget: 1000</p>
-    //       <p>Location: Berlin, Germany</p>
-    //       <p>Business Sector: IT</p>
-    //       <p>Combined Quantity: 9</p>
-    //       <p>Savings: 1800</p>
-    //     </div>
-    //     )}
-    //   </div>
