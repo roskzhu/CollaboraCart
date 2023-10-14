@@ -6,6 +6,8 @@ import ItemForm from "./pages/ItemForm";
 import SignUp from "./pages/auth/signup";
 import SignIn from "./pages/auth/signin";
 import MatchPage from "./pages/match";
+import Dashboard from "./pages/dashboard";
+
 
 const AppRouter = () => {
   return (
@@ -17,6 +19,7 @@ const AppRouter = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/match" element={<MatchPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

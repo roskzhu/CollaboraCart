@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const BusinessForm = () => {
   const handleSubmit = async (event) => {
@@ -29,12 +31,21 @@ const BusinessForm = () => {
     console.log(result);
   };
 
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
+
   return (
-    <div className="bg-white h-screen flex flex-col justify-center items-center font-inter">
-      <h1 className="text-3xl text-black font-bold mb-4">
-        Tell Us More About Your Business
-      </h1>
-      <p className="text-gray-500 text-base pb-10">Fill in the fields below.</p>
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      className="bg-white h-screen flex flex-col justify-center items-center font-inter"
+    >
+      <h1 className="text-3xl text-black font-bold">Tell Us More</h1>
+      <h2 className="text-3xl text-black font-bold mb-2">
+        <i>About Your Business</i>
+      </h2>
+      <p className="text-gray-500 text-base pb-5">Fill in the fields below.</p>
 
       <form onSubmit={handleSubmit}>
         <div class="relative z-0 w-full mb-6 group">
@@ -115,13 +126,13 @@ const BusinessForm = () => {
               for="floating_size"
               class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-              Estimated # of Employees
+              # of Employees
             </label>
           </div>
         </div>
         <button
           type="submit"
-          class="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Continue
         </button>
