@@ -1,4 +1,5 @@
 import sqlite3
+import random
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -10,7 +11,8 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 CORS(app)
 
-PAYBILT_API_URL = "https://sandbox.pp.paybilt.com/api/v2/payment/eTransfer/"  # The Paybilt API URL for the sandbox environment
+# The Paybilt API URL for the sandbox environment
+PAYBILT_API_URL = "https://sandbox.pp.paybilt.com/api/v2/payment/eTransfer/"
 
 
 # Business Database setup
@@ -152,10 +154,10 @@ def call_paybilt_api():
         "accept": "application/json",
         "Content-Type": "application/json",
         "Authorization": f"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2NDQ5MWY2MjdjM2FhZWQ2ZDg3OTA4MGUiLCJFbnYiOiJzYW5kYm94IiwiQ3JlYXRlRGF0ZVRpbWUiOiIyMDIzLTEwLTEzIDE2OjI3OjIwLjAxNTg5MSIsIkhhc1Nlc3Npb25UaW1lT3V0IjpmYWxzZSwiU2Vzc2lvblRpbWVJbkhvdXJzIjo0MzgwMCwiU2l0ZUlkIjoxODQsImlhdCI6MTY5NzIxNDQ0MCwiZXhwIjoxODU0ODk0NDQwLCJpc3MiOiJNZXJjaGFudEFwaSBJc3N1ZXIiLCJhdWQiOiJNZXJjaGFudEFwaSJ9.dJP2h4BcQbyq1GSes1S5x7C0TS41LEXg-vap_6Ousp8"
-    }   
+    }
 
     # Make a POST request to the Paybilt API
-    try: 
+    try:
         response = requests.post(PAYBILT_API_URL, json=data, headers=headers)
         print(response.text)
 
@@ -184,6 +186,33 @@ def get_most_recent_business():
         return jsonify({"company_name": result[0]}), 200
     else:
         return jsonify({"error": "No company found"}), 404
+    
+
+# This function simulates sending purchases to Recombee
+def send_purchases():
+    PROBABILITY_PURCHASED = 0.1
+    NUM = 100
+    purchase_requests = []
+
+    for user_id in ["user-%s" % i for i in range(NUM)]:
+        for item_id in ["item-%s" % i for i in range(NUM)]:
+            if random.random() < PROBABILITY_PURCHASED:
+                # Simulated request, replace with your actual code
+                request = f"AddPurchase for user {user_id} and item {item_id}"
+                purchase_requests.append(request)
+
+    # Simulated response, replace with your actual code
+    response = {"message": "Purchases sent successfully", "data": purchase_requests}
+    return response
+
+
+@app.route('/send_purchases', methods=['GET'])
+def handle_send_purchases():
+    try:
+        purchases_response = send_purchases()
+        return jsonify(purchases_response), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == '__main__':

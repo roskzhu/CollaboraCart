@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { BarLoader } from "react-spinners";
 
 const ItemForm = () => {
   const [businessInfo, setBusinessInfo] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -53,6 +55,7 @@ const ItemForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     // Convert the form string values to floating numbers
     const itemQuantity = parseFloat(event.target.floating_amount.value);
@@ -85,7 +88,10 @@ const ItemForm = () => {
       console.log("Form submission result:", result);
       // Pass payload to matches page
       console.log("Data to pass", data);
-      navigate("/match", { state: data });
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/match", { state: data });
+      }, 2000);
     } catch (error) {
       console.error("Failed to submit form:", error);
     }
@@ -94,6 +100,14 @@ const ItemForm = () => {
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <BarLoader color="#3775E8" />
+      </div>
+    );
+  }
 
   return (
     <div

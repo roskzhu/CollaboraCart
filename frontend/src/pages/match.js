@@ -5,6 +5,7 @@ import team from "../assets/teams.svg";
 import SustainabilityScore from "../components/matched_results/SustainabilityScore";
 import MoneySaved from "../components/matched_results/MoneySaved";
 import MatchedResults from "../components/matched_results/Results";
+import Recommendations from "../components/matched_results/Recommendations";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Fade from "react-reveal/Fade";
@@ -135,12 +136,13 @@ const MatchPage = () => {
           ) : (
             <MatchedResults formData={formData} />
           )}
+        <Recommendations/>
         </div>
         
       </section>
-      
     </div>
   );
+
 };
 
 export default MatchPage;

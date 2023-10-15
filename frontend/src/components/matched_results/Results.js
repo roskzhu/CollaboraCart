@@ -2,41 +2,39 @@ import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { Link } from "react-router-dom";
 
-
-function MatchedResults() {
+function MatchedResults({ formData }) {
   const [apiResponse, setApiResponse] = useState(null);
 
   const handleOrderClick = async () => {
-    const url = "http://127.0.0.1:5000/paybilt/api/v2/payment/OnlineBanking"; 
+    const url = "http://127.0.0.1:5000/paybilt/api/v2/payment/OnlineBanking";
     function generateUniqueUDFS() {
       return "udf_" + Date.now(); // Using a timestamp as a unique identifier
-    }   
+    }
     const payload = {
-      "email": "Brandon@gmail.com",
-      "phone": "+14034881071",
-      "first_name": "Brandon",
-      "last_name": "Martin",
-      "address": "3291 Craven Place",
-      "city": "Medicine Hat",
-      "state": "Alberta",
-      "country": "CA",
-      "zip_code": "T1A 0N1",
-      "ip_address": "127.0.0.1",
-      "ntf_url": "https://postback.url",
-      "shipping_cost": 0,
-      "udfs": [
-        generateUniqueUDFS()
-      ],
-      "items": [{quantity: 1, unit_price: 3.0}]
+      email: "Brandon@gmail.com",
+      phone: "+14034881071",
+      first_name: "Brandon",
+      last_name: "Martin",
+      address: "3291 Craven Place",
+      city: "Medicine Hat",
+      state: "Alberta",
+      country: "CA",
+      zip_code: "T1A 0N1",
+      ip_address: "127.0.0.1",
+      ntf_url: "https://postback.url",
+      shipping_cost: 0,
+      udfs: [generateUniqueUDFS()],
+      items: [{ quantity: 1, unit_price: 3.0 }],
     };
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2NDQ5MWY2MjdjM2FhZWQ2ZDg3OTA4MGUiLCJFbnYiOiJzYW5kYm94IiwiQ3JlYXRlRGF0ZVRpbWUiOiIyMDIzLTEwLTEzIDE2OjI3OjIwLjAxNTg5MSIsIkhhc1Nlc3Npb25UaW1lT3V0IjpmYWxzZSwiU2Vzc2lvblRpbWVJbkhvdXJzIjo0MzgwMCwiU2l0ZUlkIjoxODQsImlhdCI6MTY5NzIxNDQ0MCwiZXhwIjoxODU0ODk0NDQwLCJpc3MiOiJNZXJjaGFudEFwaSBJc3N1ZXIiLCJhdWQiOiJNZXJjaGFudEFwaSJ9.dJP2h4BcQbyq1GSes1S5x7C0TS41LEXg-vap_6Ousp8"
-    
-    try {  
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2NDQ5MWY2MjdjM2FhZWQ2ZDg3OTA4MGUiLCJFbnYiOiJzYW5kYm94IiwiQ3JlYXRlRGF0ZVRpbWUiOiIyMDIzLTEwLTEzIDE2OjI3OjIwLjAxNTg5MSIsIkhhc1Nlc3Npb25UaW1lT3V0IjpmYWxzZSwiU2Vzc2lvblRpbWVJbkhvdXJzIjo0MzgwMCwiU2l0ZUlkIjoxODQsImlhdCI6MTY5NzIxNDQ0MCwiZXhwIjoxODU0ODk0NDQwLCJpc3MiOiJNZXJjaGFudEFwaSBJc3N1ZXIiLCJhdWQiOiJNZXJjaGFudEFwaSJ9.dJP2h4BcQbyq1GSes1S5x7C0TS41LEXg-vap_6Ousp8";
+
+    try {
       const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer ${token}", 
+          Authorization: "Bearer ${token}",
         },
         body: JSON.stringify(payload),
       });
@@ -46,9 +44,9 @@ function MatchedResults() {
       }
 
       const data = await response.json();
-      console.log('Paybilt API Response:', data); // Handle the API response here
+      console.log("Paybilt API Response:", data); // Handle the API response here
 
-      window.open(data.bank_payment_url, '_blank');
+      window.open(data.bank_payment_url, "_blank");
     } catch (error) {
       console.error("Failed to call Paybilt API:", error);
     }
@@ -96,9 +94,9 @@ function MatchedResults() {
       <p className="text-base font-normal text-gray-500 mb-5">
         <b className="text-xl">Congratulations on getting matched!</b> <br />
         Below is a table summarizing your savings and recommended
-        <br /> purchase quantities based on your buying pool.
+        <br /> purchase quantities based on your buying pool
       </p>
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <table className="w-full text-sm text-left text-gray-700">
         <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-white-700 dark:text-black-400">
           <tr>
             <th scope="col" className="px-6 py-3 rounded-l-lg">
@@ -166,23 +164,40 @@ function MatchedResults() {
               scope="row"
               className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black"
             >
-              Business Sector
+              Industry
             </th>
             <td className="px-6 py-4"></td>
             <td className="px-6 py-4">{formData?.business_sector}</td>
           </tr>
-          {/* ... other code ... */}
+          <tr className="bg-white dark:bg-white-800">
+            <th
+              scope="row"
+              className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black"
+            >
+              Per unit savings
+            </th>
+            <td className="px-6 py-4"></td>
+            <td className="px-6 py-4 text-green-600">$36.67</td>
+          </tr>
+          <tr className="bg-white dark:bg-white-800">
+            <th
+              scope="row"
+              className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black"
+            >
+              Combined savings
+            </th>
+            <td className="px-6 py-4"></td>
+            <td className="px-6 py-4 text-green-600">$220.00</td>
+          </tr>
         </tbody>
-        {/* ... other code ... */}
       </table>
-      {/* ... other code ... */}
-        <Link
-          onClick={handleOrderClick}
-          className="btn text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 
-                      py-3 px-6 rounded-full transition-transform transform hover:scale-105 text-2xl font-bold"
-        >
-          Make Your Order
-        </Link>
+      <button
+        onClick={handleOrderClick}
+        className="btn mt-10 text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 
+                      py-2 px-8 rounded-full transition-transform transform text-xl font-medium"
+      >
+        Order Now
+      </button>
     </div>
   );
 }
