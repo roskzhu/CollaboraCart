@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 function Recommendations({ formData }) {
   const [apiResponse, setApiResponse] = useState(null);
 
-  const handleOrderClick = async (payload) => {
-    const url = "http://127.0.0.1:5000/paybilt/api/v2/payment/send_purchases";
+  const handleRecommendations = async (payload) => {
+    const url = "http://127.0.0.1:5000/send_purchases";
     const token =
       "I1NiIsInR5cCI6IkpXVCJ9.OiM2FhZWQ2ZDg3OTA4MGUiLCJFbnYiOiJzYW5kYm94IiwiQ3JlYXRlRGF0ZVRpbWUiOiIyMDIzLTEwLTEzIDE2OjI3OjIwLjAxNTg5MSIsIkhhc1Nlc3Npb25UaW1lT3V0IjpmYWxzZSwiU2Vzc2lvblRpbWVJbkhvdXJzIjo0MzgwMCwiU2l0ZUlkIjoxODQsImlhdCI6MTY5NzIxNDQ0MCwiZXhwIjoxODU0ODk0NDQwLCJpc3MiOiJNZXJjaGFudEFwaSBJc3N1ZXIiLCJhdWQiOiJNZXJjaGFudEFwaSJ9.dJP2h4BcQbyq1GSes1S5x7C0TS41LEXg-vap_6Ousp8";
 
@@ -25,11 +25,10 @@ function Recommendations({ formData }) {
       }
 
       const data = await response.json();
-      console.log("Paybilt API Response:", data); // Handle the API response here
+      console.log("Recombee API Response:", data); // Handle the API response here
 
-      window.open(data.bank_payment_url, "_blank");
     } catch (error) {
-      console.error("Failed to call Paybilt API:", error);
+      console.error("Failed to call Recombee API:", error);
     }
   };
 
