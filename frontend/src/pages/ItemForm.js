@@ -14,21 +14,35 @@ const ItemForm = () => {
         const headers = {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
+          "Access-Control-Allow-Methods": "GET",
         };
 
-        const companyName = "Small biz"; // The desired company name
         const response = await fetch(
-          `http://127.0.0.1:5000/GetBusinessInfo?company_name=${encodeURIComponent(
-            companyName
-          )}`
-        ); // Endpoint to get business info
+          `http://127.0.0.1:5000/GetMostRecentBusiness`,
+          { headers }
+        );
+
         if (!response.ok) {
           throw new Error(`An error has occurred: ${response.status}`);
         }
+
         const result = await response.json();
-        setBusinessInfo(result);
-        console.log("Business Information fetched:", result);
+
+        // Then fetch full business details based on the company name
+        const businessResponse = await fetch(
+          `http://127.0.0.1:5000/GetBusinessInfo?company_name=${encodeURIComponent(
+            result.company_name
+          )}`
+        );
+
+        if (!businessResponse.ok) {
+          throw new Error(`An error has occurred: ${businessResponse.status}`);
+        }
+
+        const businessResult = await businessResponse.json();
+
+        setBusinessInfo(businessResult);
+        console.log("Business Information fetched:", businessResult);
       } catch (error) {
         console.error("Failed to fetch business information:", error);
       }
@@ -71,7 +85,7 @@ const ItemForm = () => {
       console.log("Form submission result:", result);
       // Pass payload to matches page
       console.log("Data to pass", data);
-      navigate("/match", { data });
+      navigate("/match", { state: data });
     } catch (error) {
       console.error("Failed to submit form:", error);
     }

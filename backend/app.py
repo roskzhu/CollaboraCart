@@ -74,6 +74,26 @@ def submit_item():
     return jsonify(response), 200
 
 
+@app.route('/GetLatestBusiness', methods=['GET'])
+def get_latest_business():
+    conn_business = sqlite3.connect('businesses.db')
+    c_business = conn_business.cursor()
+
+    # Get the most recent business data
+    c_business.execute(
+        'SELECT * FROM submissions ORDER BY rowid DESC LIMIT 1')
+    result = c_business.fetchone()
+    conn_business.close()
+
+    if result:
+        keys = ["company_name", "business_sector",
+                "location", "email", "employee_count"]
+        business_data = dict(zip(keys, result))
+        return jsonify(business_data), 200
+    else:
+        return jsonify({"error": "No business found"}), 404
+
+
 @app.route('/GetBusinessInfo', methods=['GET'])
 def get_business_info():
     company_name = request.args.get('company_name')

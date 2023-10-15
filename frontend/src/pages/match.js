@@ -7,17 +7,19 @@ import MoneySaved from "../components/matched_results/MoneySaved";
 import MatchedResults from "../components/matched_results/Results";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import Fade from 'react-reveal/Fade';
-
+import Fade from "react-reveal/Fade";
 
 const MatchPage = () => {
   const location = useLocation();
+  const formData = location.state;
   const [optimalMatch, setOptimalMatch] = useState(null);
+
+  console.log("Received formData in MatchPage:", formData);
 
   useEffect(() => {
     const fetchOptimalMatch = async () => {
       try {
-        const payload = JSON.stringify(location.state);
+        const payload = formData;
         console.log("Sending payload:", payload); // Logging the payload
 
         const response = await fetch("http://127.0.0.1:5000/FindOptimalMatch", {
@@ -62,32 +64,34 @@ const MatchPage = () => {
       className="bg-white h-screen flex flex-col font-poppins ml-4 mt-4w ot "
     >
       {/* gradient animations */}
-    <div className="absolute z-[0] w-full h-[100%] top-1 left-0">
-      <Fade clear delay={500}>
-      <div
-        className="absolute z-[0] w-1/6 h-3/6 animate-pulse-slow rounded-full"
-        style={{
-          right: "-184px",
-          top: "464px",
-          background: "linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #fead6147 100%)", 
-          mixBlendMode: "multiply",
-          filter: "blur(100px)",
-          animation: 'spin-slow 10s linear infinite'
-        }}
-      ></div>
-      <div
-        className="absolute z-[0] w-2/6 h-3/6 animate-pulse-slow rounded-full"
-        style={{
-          left: "-144px",
-          top: "64px",
-          background: "linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #0037ff3e 50%)", 
-          mixBlendMode: "multiply",
-          filter: "blur(80px)",
-          animation: 'spin 3s linear infinite'
-        }}
-      ></div>
-      </Fade>
-    </div>
+      <div className="absolute z-[0] w-full h-[100%] top-1 left-0">
+        <Fade clear delay={500}>
+          <div
+            className="absolute z-[0] w-1/6 h-3/6 animate-pulse-slow rounded-full"
+            style={{
+              right: "-184px",
+              top: "464px",
+              background:
+                "linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #fead6147 100%)",
+              mixBlendMode: "multiply",
+              filter: "blur(100px)",
+              animation: "spin-slow 10s linear infinite",
+            }}
+          ></div>
+          <div
+            className="absolute z-[0] w-2/6 h-3/6 animate-pulse-slow rounded-full"
+            style={{
+              left: "-144px",
+              top: "64px",
+              background:
+                "linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #0037ff3e 50%)",
+              mixBlendMode: "multiply",
+              filter: "blur(80px)",
+              animation: "spin 3s linear infinite",
+            }}
+          ></div>
+        </Fade>
+      </div>
       <section className="relative pt-20">
         <div
           className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1"
@@ -129,7 +133,7 @@ const MatchPage = () => {
               {/* Add more display fields as required */}
             </div>
           ) : (
-            <MatchedResults />
+            <MatchedResults formData={formData} />
           )}
         </div>
       </section>
