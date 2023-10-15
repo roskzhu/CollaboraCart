@@ -7,7 +7,7 @@ function CurrentStockCard() {
   const getChartOptions = () => {
     return {
       series: [52.8, 22.8],
-      colors: ["#2AC58E", "#928DDF",],
+      colors: ["#2AC58E", "#928DDF"],
       chart: {
         height: 420,
         width: "100%",
@@ -36,10 +36,9 @@ function CurrentStockCard() {
   };
 
   return (
-    <div className="flex-initial px-10 shadow-md container-sm mx-auto">
+    <div className="flex-initial px-10 shadow-md rounded-lg container-sm mx-auto">
       <h2 className="font-bold text-2xl p-3">Your Sustainability Score:</h2>{" "}
-      <h2 className="font-bold text-4xl px-3">7</h2>{" "}
-      {/* Updated title */}
+      <h2 className="font-bold text-4xl px-3">7</h2> {/* Updated title */}
       <div className="p-4">
         <ReactApexChart
           options={getChartOptions()}

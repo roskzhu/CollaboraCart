@@ -27,7 +27,7 @@ function TransactionHistory() {
   ];
 
   return (
-    <div className="flex-initial px-10 py-5 rounded-lg shadow-md container-sm mx-auto">
+    <div className="flex-initial px-10 py-10 rounded-lg shadow-md container-sm mx-auto">
       <h2 className="font-bold text-2xl p-4">Transaction History</h2>
       <div className="p-4">
         <ul className="divide-y divide-gray-300">
