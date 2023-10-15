@@ -15,6 +15,7 @@ const MatchPage = () => {
   const [optimalMatch, setOptimalMatch] = useState(null);
 
   useEffect(() => {
+    // fetch matches for businesses
     const fetchOptimalMatch = async () => {
       try {
         const payload = JSON.stringify(location.state);
@@ -49,6 +50,7 @@ const MatchPage = () => {
     // if (location.state) {
     fetchOptimalMatch();
     // }
+
   }, [location.state]);
 
   useEffect(() => {
@@ -67,7 +69,7 @@ const MatchPage = () => {
       <div
         className="absolute z-[0] w-1/6 h-3/6 animate-pulse-slow rounded-full"
         style={{
-          right: "-184px",
+          right: "0px",
           top: "464px",
           background: "linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #fead6147 100%)", 
           mixBlendMode: "multiply",
@@ -132,7 +134,9 @@ const MatchPage = () => {
             <MatchedResults />
           )}
         </div>
+        
       </section>
+      
     </div>
   );
 };
