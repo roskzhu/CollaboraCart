@@ -117,5 +117,22 @@ def get_optimal_match():
         return response, 200
 
 
+@app.route('/GetMostRecentBusiness', methods=['GET'])
+def get_most_recent_business():
+    conn_business = sqlite3.connect('businesses.db')
+    c_business = conn_business.cursor()
+
+    # Get the most recent company name
+    c_business.execute(
+        'SELECT company_name FROM submissions ORDER BY rowid DESC LIMIT 1')
+    result = c_business.fetchone()
+    conn_business.close()
+
+    if result:
+        return jsonify({"company_name": result[0]}), 200
+    else:
+        return jsonify({"error": "No company found"}), 404
+
+
 if __name__ == '__main__':
     app.run(debug=True)
