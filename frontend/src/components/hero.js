@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import team from "../assets/teams.svg";
 import BusinessForm from "../pages/BusinessForm";
+import Typewriter from 'typewriter-effect';
+
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -38,7 +40,19 @@ const Hero = () => {
               data-aos="zoom-y-out"
               data-aos-delay="150"
             >
-              <i>Empower your business by joining forces with others.</i>
+              <Typewriter 
+            onInit={(typewriter) => {
+              typewriter.typeString('Empower your business by joining forces with others.')
+                .callFunction(() => {
+                  console.log('String typed out!');
+                })
+                .pauseFor(10000)
+                .callFunction(() => {
+                  console.log('All strings were deleted');
+                })
+                .start();
+            }}
+          />
             </p>
 
             <div

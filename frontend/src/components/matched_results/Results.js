@@ -1,7 +1,59 @@
 import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { Link } from "react-router-dom";
 
-function MatchedResults({ formData }) {
+
+function MatchedResults() {
+  const [apiResponse, setApiResponse] = useState(null);
+
+  const handleOrderClick = async () => {
+    const url = "http://127.0.0.1:5000/paybilt/api/v2/payment/OnlineBanking"; 
+    function generateUniqueUDFS() {
+      return "udf_" + Date.now(); // Using a timestamp as a unique identifier
+    }   
+    const payload = {
+      "email": "Brandon@gmail.com",
+      "phone": "+14034881071",
+      "first_name": "Brandon",
+      "last_name": "Martin",
+      "address": "3291 Craven Place",
+      "city": "Medicine Hat",
+      "state": "Alberta",
+      "country": "CA",
+      "zip_code": "T1A 0N1",
+      "ip_address": "127.0.0.1",
+      "ntf_url": "https://postback.url",
+      "shipping_cost": 0,
+      "udfs": [
+        generateUniqueUDFS()
+      ],
+      "items": [{quantity: 1, unit_price: 3.0}]
+    };
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2NDQ5MWY2MjdjM2FhZWQ2ZDg3OTA4MGUiLCJFbnYiOiJzYW5kYm94IiwiQ3JlYXRlRGF0ZVRpbWUiOiIyMDIzLTEwLTEzIDE2OjI3OjIwLjAxNTg5MSIsIkhhc1Nlc3Npb25UaW1lT3V0IjpmYWxzZSwiU2Vzc2lvblRpbWVJbkhvdXJzIjo0MzgwMCwiU2l0ZUlkIjoxODQsImlhdCI6MTY5NzIxNDQ0MCwiZXhwIjoxODU0ODk0NDQwLCJpc3MiOiJNZXJjaGFudEFwaSBJc3N1ZXIiLCJhdWQiOiJNZXJjaGFudEFwaSJ9.dJP2h4BcQbyq1GSes1S5x7C0TS41LEXg-vap_6Ousp8"
+    
+    try {  
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer ${token}", 
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error(`An error has occurred: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Paybilt API Response:', data); // Handle the API response here
+
+      window.open(data.bank_payment_url, '_blank');
+    } catch (error) {
+      console.error("Failed to call Paybilt API:", error);
+    }
+  };
+
   const series = [
     {
       name: "Developer Edition",
@@ -124,6 +176,13 @@ function MatchedResults({ formData }) {
         {/* ... other code ... */}
       </table>
       {/* ... other code ... */}
+        <Link
+          onClick={handleOrderClick}
+          className="btn text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 
+                      py-3 px-6 rounded-full transition-transform transform hover:scale-105 text-2xl font-bold"
+        >
+          Make Your Order
+        </Link>
     </div>
   );
 }
