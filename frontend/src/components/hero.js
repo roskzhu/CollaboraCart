@@ -31,7 +31,7 @@ const Hero = () => {
               data-aos="zoom-y-out"
             >
               Collabora
-              <span className="bg-clip-text text-black bg-gradient-to-r from-blue-500 to-blue-800">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
                 Cart
               </span>
             </h1>
