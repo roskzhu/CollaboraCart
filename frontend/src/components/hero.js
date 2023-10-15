@@ -41,17 +41,17 @@ const Hero = () => {
               data-aos-delay="150"
             >
             <Typewriter 
-            onInit={(typewriter) => {
-              typewriter.typeString('Empower your business by joining forces with others.')
-                .callFunction(() => {
-                  console.log('String typed out!');
-                })
-                .pauseFor(10000)
-                .callFunction(() => {
-                  console.log('All strings were deleted');
-                })
-                .start();
-            }}
+              onInit={(typewriter) => {
+                typewriter.typeString('Empower your business by joining forces with others.')
+                  .callFunction(() => {
+                    console.log('String typed out!');
+                  })
+                  .pauseFor(10000)
+                  .callFunction(() => {
+                    console.log('All strings were deleted');
+                  })
+                  .start();
+              }}
           />
             </p>
 
