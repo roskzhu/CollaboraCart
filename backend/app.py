@@ -1,12 +1,16 @@
+import sqlite3
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import sqlite3
+import requests
 
 from utils.matching import find_optimal_match
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
-# CORS(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app)
+
+PAYBILT_API_URL = "https://sandbox.pp.paybilt.com/api/v2/payment/eTransfer/"  # The Paybilt API URL for the sandbox environment
 
 
 # Business Database setup
@@ -74,6 +78,26 @@ def submit_item():
     return jsonify(response), 200
 
 
+@app.route('/GetLatestBusiness', methods=['GET'])
+def get_latest_business():
+    conn_business = sqlite3.connect('businesses.db')
+    c_business = conn_business.cursor()
+
+    # Get the most recent business data
+    c_business.execute(
+        'SELECT * FROM submissions ORDER BY rowid DESC LIMIT 1')
+    result = c_business.fetchone()
+    conn_business.close()
+
+    if result:
+        keys = ["company_name", "business_sector",
+                "location", "email", "employee_count"]
+        business_data = dict(zip(keys, result))
+        return jsonify(business_data), 200
+    else:
+        return jsonify({"error": "No business found"}), 404
+
+
 @app.route('/GetBusinessInfo', methods=['GET'])
 def get_business_info():
     company_name = request.args.get('company_name')
@@ -117,50 +141,32 @@ def get_optimal_match():
         return response, 200
 
 
-# @app.route('/call_paybilt_api', methods=['POST'])
-# def call_paybilt_api():
-#      data = {
-#         "customerEmail": "test@paybilt.com",
-#         "firstname": "John",
-#         "lastname": "Smith",
-#         "address": "123 Main Street West",
-#         "city": "Toronto",
-#         "state": "Ontario",
-#         "country": "CA",
-#         "zip_code": "M5M 5M5",
-#         "phone": "14165551234",
-#         "currency": "CAD",
-#         "udf1": "H6MsQARmAnj2cv48",
-#         "amount_shipping": "2",
-#         "totalPrice": "19.23",
-#         "sid": "12",
-#         "token": "EncryptedBearerToken",
-#         "ntf_url": "Your_notification_URL",
-#         "return_url": "Your_return_URL"
-#     }
+@app.route('/paybilt/api/v2/payment/OnlineBanking', methods=['POST'])
+def call_paybilt_api():
+    data = request.get_json()
+    # app.logger.info(data)
+    print(data)
 
-#     # Encrypt the Bearer Token
-#     def aes_encrypt(data, key, iv):
-#         return CryptoJS.AES.encrypt(data, CryptoJS.enc.Utf8.parse(key), {
-#             iv: CryptoJS.enc.Utf8.parse(iv),
-#             padding: CryptoJS.pad.Pkcs7,
-#             mode: CryptoJS.mode.CBC
-#         }).toString()
+    # Process the data and interact with the Paybilt API
+    headers = {
+        "accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2NDQ5MWY2MjdjM2FhZWQ2ZDg3OTA4MGUiLCJFbnYiOiJzYW5kYm94IiwiQ3JlYXRlRGF0ZVRpbWUiOiIyMDIzLTEwLTEzIDE2OjI3OjIwLjAxNTg5MSIsIkhhc1Nlc3Npb25UaW1lT3V0IjpmYWxzZSwiU2Vzc2lvblRpbWVJbkhvdXJzIjo0MzgwMCwiU2l0ZUlkIjoxODQsImlhdCI6MTY5NzIxNDQ0MCwiZXhwIjoxODU0ODk0NDQwLCJpc3MiOiJNZXJjaGFudEFwaSBJc3N1ZXIiLCJhdWQiOiJNZXJjaGFudEFwaSJ9.dJP2h4BcQbyq1GSes1S5x7C0TS41LEXg-vap_6Ousp8"
+    }   
 
-#     encrypted_token = aes_encrypt(data['token'], 'YourSecretKey', 'Your16CharUdf1')
+    # Make a POST request to the Paybilt API
+    try: 
+        response = requests.post(PAYBILT_API_URL, json=data, headers=headers)
+        print(response.text)
 
-#     # Make the API call
-#     # You can use the requests library or any other HTTP library of your choice
-#     # Here's an example using the requests library
-#     import requests
-#     response = requests.post('https://your-api-url.com/endpoint', json={**data, "token": encrypted_token})
-
-#     # Handle the API response
-#     if response.status_code == 200:
-#         api_response = response.json()
-#         return jsonify(api_response)
-#     else:
-#         return jsonify({"error": "Failed to call Paybilt API"}), 500
+        # Handle the API response
+        if response.status_code == 200:
+            api_response = response.json()
+            return jsonify(api_response), 200
+        else:
+            return jsonify({"error": "Internal Server Error"}), 500
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route('/GetMostRecentBusiness', methods=['GET'])
@@ -180,6 +186,6 @@ def get_most_recent_business():
         return jsonify({"error": "No company found"}), 404
 
 
-
 if __name__ == '__main__':
     app.run(debug=True)
+    app.run(host='127.0.0.1', port=5000)
