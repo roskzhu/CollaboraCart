@@ -14,7 +14,8 @@
     <br><br>
 </div>
 
-<img width="1512" alt="Screenshot 2023-10-14 at 10 02 53 AM" src="https://github.com/roskzhu/CollaboraCart/assets/66566975/bcee6c86-d3d3-4215-af91-4c1f97e0043e">
+<img width="1512" alt="Screenshot 2023-10-14 at 5 51 25 PM" src="https://github.com/roskzhu/CollaboraCart/assets/66566975/7a5b5672-b9c0-4675-abb6-baab430a25b3">
+
 
 ## What is CollaboraCart?
 
@@ -32,7 +33,8 @@ Before you begin, ensure you have met the following requirements:
 - [Python](https://www.python.org/) and [pip](https://pip.pypa.io/en/stable/) installed for the backend.
 
 ## Architecture Overview
-![CollaboraCart drawio](https://github.com/roskzhu/CollaboraCart/assets/66566975/739d5833-e4a4-46dd-a7cc-19f2a631d5a2)
+![CollaboraCart drawio](https://github.com/roskzhu/CollaboraCart/assets/66566975/00b4a0c1-fe95-4c7b-a4c6-9d9e6447abe1)
+
 
 ## Getting Started
 
