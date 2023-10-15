@@ -67,7 +67,7 @@ const MatchPage = () => {
       <div
         className="absolute z-[0] w-1/6 h-3/6 animate-pulse-slow rounded-full"
         style={{
-          right: "-184px",
+          right: "0px",
           top: "464px",
           background: "linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #fead6147 100%)", 
           mixBlendMode: "multiply",

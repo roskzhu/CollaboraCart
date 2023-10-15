@@ -117,5 +117,50 @@ def get_optimal_match():
         return response, 200
 
 
+# @app.route('/call_paybilt_api', methods=['POST'])
+# def call_paybilt_api():
+#      data = {
+#         "customerEmail": "test@paybilt.com",
+#         "firstname": "John",
+#         "lastname": "Smith",
+#         "address": "123 Main Street West",
+#         "city": "Toronto",
+#         "state": "Ontario",
+#         "country": "CA",
+#         "zip_code": "M5M 5M5",
+#         "phone": "14165551234",
+#         "currency": "CAD",
+#         "udf1": "H6MsQARmAnj2cv48",
+#         "amount_shipping": "2",
+#         "totalPrice": "19.23",
+#         "sid": "12",
+#         "token": "EncryptedBearerToken",
+#         "ntf_url": "Your_notification_URL",
+#         "return_url": "Your_return_URL"
+#     }
+
+#     # Encrypt the Bearer Token
+#     def aes_encrypt(data, key, iv):
+#         return CryptoJS.AES.encrypt(data, CryptoJS.enc.Utf8.parse(key), {
+#             iv: CryptoJS.enc.Utf8.parse(iv),
+#             padding: CryptoJS.pad.Pkcs7,
+#             mode: CryptoJS.mode.CBC
+#         }).toString()
+
+#     encrypted_token = aes_encrypt(data['token'], 'YourSecretKey', 'Your16CharUdf1')
+
+#     # Make the API call
+#     # You can use the requests library or any other HTTP library of your choice
+#     # Here's an example using the requests library
+#     import requests
+#     response = requests.post('https://your-api-url.com/endpoint', json={**data, "token": encrypted_token})
+
+#     # Handle the API response
+#     if response.status_code == 200:
+#         api_response = response.json()
+#         return jsonify(api_response)
+#     else:
+#         return jsonify({"error": "Failed to call Paybilt API"}), 500
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { Link } from "react-router-dom";
 
 function MatchedResults() {
   const series = [
@@ -37,11 +38,11 @@ function MatchedResults() {
   };
 
   return (
-    <div className="flex-initial px-10 py-5 rounded-lg shadow-md container-sm mx-auto mb-20">
+    <div className="flex-initial px-10 py-5 rounded-lg shadow-md container-sm mx-auto mb-20 pb-10">
       <h2 className="font-bold text-4xl p-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
         Summary of Match Results{" "}
       </h2>{" "}
-      <p className="text-base font-normal text-gray-500 mb-5">
+      <p className="text-base font-normal text-gray-500 mb-10">
         <div className="relative overflow-x-auto">
         <p className="text-base font-normal text-gray-500 mb-5">
           Congratulations on getting matched! <br />
@@ -121,9 +122,15 @@ function MatchedResults() {
               </tr>
             </tfoot>
           </table>
-          {/* CHECKOUT*** */}
+
         </div>
       </p>
+      <Link
+        className="btn text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 
+                    py-4 px-8 rounded-2xl transition-transform transform hover:scale-105 text-2xl font-bold"
+      >
+        Make Your Purchase Here
+      </Link>
     </div>
   );
 }
