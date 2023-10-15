@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Hero from "../components/hero";
-import NavBar from "../components/ui/navbar";
+import LandingNavbar from "../components/ui/LandingNavbar";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Fade from "react-reveal/Fade";
@@ -14,7 +14,7 @@ const Landing = () => {
       {/* gradient animations */}
       <div className="absolute z-[0] w-full h-[100%] top-1 left-0">
         <Fade clear delay={500}>
-          <div
+          {/* <div
             className="absolute z-[0] w-1/6 h-3/6 animate-pulse-slow rounded-full"
             style={{
               right: "-184px",
@@ -25,7 +25,7 @@ const Landing = () => {
               filter: "blur(100px)",
               animation: "spin-slow 10s linear infinite",
             }}
-          ></div>
+          ></div> */}
           <div
             className="absolute z-[0] w-2/6 h-3/6 animate-pulse-slow rounded-full"
             style={{
@@ -41,7 +41,7 @@ const Landing = () => {
         </Fade>
       </div>
       <div data-aos="fade-up" data-aos-duration="1000">
-        <NavBar />
+        <LandingNavbar />
         <Hero />
       </div>
     </>

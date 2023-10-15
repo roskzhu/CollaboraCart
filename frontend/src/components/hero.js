@@ -19,9 +19,7 @@ const Hero = () => {
             height="578"
             viewBox="0 0 1360 578"
             xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* ... SVG content remains unchanged ... */}
-          </svg>
+          ></svg>
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -40,7 +38,7 @@ const Hero = () => {
               data-aos="zoom-y-out"
               data-aos-delay="150"
             >
-              Empower your business by joining forces with others.
+              <i>Empower your business by joining forces with others.</i>
             </p>
 
             <div
