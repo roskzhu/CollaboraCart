@@ -17,7 +17,6 @@ const Dashboard = () => {
         
       </div>
       <div className="px-3 sm:px-6 lg:px-8 py-4 w-full max-w-8xl mx-auto">
-        {/* Welcome banner */}
         <WelcomeBanner />
       </div>
 
