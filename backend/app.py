@@ -5,8 +5,8 @@ import sqlite3
 from utils.matching import find_optimal_match
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
-# CORS(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app)
 
 
 # Business Database setup
@@ -136,3 +136,4 @@ def get_most_recent_business():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    app.run(host='127.0.0.1', port=5000)
