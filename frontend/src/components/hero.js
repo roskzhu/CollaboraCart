@@ -56,7 +56,7 @@ const Hero = () => {
               </Link>
               <a
                 className="btn text-white bg-gray-900 hover:bg-gray-800 py-3 px-6 rounded-full transition-transform transform hover:scale-105"
-                href="#0"
+                href="https://github.com/roskzhu/CollaboraCart"
               >
                 Learn more
               </a>

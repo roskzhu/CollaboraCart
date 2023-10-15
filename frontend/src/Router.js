@@ -7,6 +7,8 @@ import SignUp from "./pages/auth/signup";
 import SignIn from "./pages/auth/signin";
 import MatchPage from "./pages/match";
 import Dashboard from "./pages/dashboard";
+import Typewriter from 'typewriter-effect';
+import Fade from 'react-reveal/Fade';
 
 
 const AppRouter = () => {

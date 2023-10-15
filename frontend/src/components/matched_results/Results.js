@@ -43,6 +43,10 @@ function MatchedResults() {
       </h2>{" "}
       <p className="text-base font-normal text-gray-500 mb-5">
         <div className="relative overflow-x-auto">
+        <p className="text-base font-normal text-gray-500 mb-5">
+          Congratulations on getting matched! <br />
+          Below is a table summarizing your savings and recommended purchase quantities based on your buying pool.
+        </p>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-white-700 dark:text-black-400">
               <tr>
@@ -106,27 +110,18 @@ function MatchedResults() {
                 <td className="px-6 py-4"></td>
                 <td className="px-6 py-4">9</td>
               </tr>
-              <tr className="bg-white dark:bg-white-800">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black"
-                >
-                  Savings
-                </th>
-                <td className="px-6 py-4"></td>
-                <td className="px-6 py-4">1800</td>
-              </tr>
             </tbody>
             <tfoot>
-              <tr className="font-semibold text-gray-900 dark:text-white">
+              <tr className="font-semibold text-gray-900 dark:text-gray-900">
                 <th scope="row" className="px-6 py-3 text-base">
-                  Total
+                Savings
                 </th>
-                <td className="px-6 py-3">3</td>
-                <td className="px-6 py-3">21,000</td>
+                <td className="px-6 py-3"></td>
+                <td className="px-6 py-3">1800</td>
               </tr>
             </tfoot>
           </table>
+          {/* CHECKOUT*** */}
         </div>
       </p>
     </div>
