@@ -4,11 +4,11 @@ import ReactApexChart from "react-apexcharts";
 function PricingTrendsCard() {
   const series = [
     {
-      name: "Developer Edition",
+      name: "Target",
       data: [1500, 1418, 1456, 1526, 1356, 1256],
     },
     {
-      name: "Designer Edition",
+      name: "Actual",
       data: [643, 413, 765, 412, 1423, 1731],
     },
   ];

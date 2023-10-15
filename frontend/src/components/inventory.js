@@ -3,9 +3,28 @@ import { Link } from "react-router-dom";
 
 const InventoryTable = () => {
   const initialData = [
-    { item: "A4 Paper Reams", category: "Stationery", quantity: 120 },
-    { item: "Desk Chairs", category: "Furniture", quantity: 15 },
-    { item: "LED Bulbs", category: "Electronics", quantity: 60 },
+    { item: "Dark Roast Coffee Beans", category: "Beverages", quantity: 100 },
+    {
+      item: "Coffee Cups",
+      category: "Disposable Serving Supplies",
+      quantity: 1000,
+    },
+    { item: "Vanilla Syrup", category: "Beverage Ingredients", quantity: 25 },
+    { item: "Lids", category: "Disposable Serving Supplies", quantity: 1000 },
+    {
+      item: "Stir Sticks",
+      category: "Disposable Serving Supplies",
+      quantity: 500,
+    },
+    {
+      item: "Espresso Machine Cleaning Tablets",
+      category: "Cleaning Items",
+      quantity: 30,
+    },
+    { item: "Green Tea Bags", category: "Tea", quantity: 200 },
+    { item: "Almond Milk", category: "Beverage Ingredients", quantity: 50 },
+    { item: "Croissants", category: "Bakery Items", quantity: 40 },
+
     // ... other items (add more as needed)
   ];
 
