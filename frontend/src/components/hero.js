@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import team from "../assets/teams.svg";
 import BusinessForm from "../pages/BusinessForm";
+import Typewriter from 'typewriter-effect';
+
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -31,7 +33,7 @@ const Hero = () => {
               data-aos="zoom-y-out"
             >
               Collabora
-              <span className="bg-clip-text text-black bg-gradient-to-r from-blue-500 to-blue-800">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
                 Cart
               </span>
             </h1>
@@ -40,7 +42,19 @@ const Hero = () => {
               data-aos="zoom-y-out"
               data-aos-delay="150"
             >
-              Empower your business by joining forces with others.
+              <Typewriter 
+            onInit={(typewriter) => {
+              typewriter.typeString('Empower your business by joining forces with others.')
+                .callFunction(() => {
+                  console.log('String typed out!');
+                })
+                .pauseFor(10000)
+                .callFunction(() => {
+                  console.log('All strings were deleted');
+                })
+                .start();
+            }}
+          />
             </p>
 
             <div
