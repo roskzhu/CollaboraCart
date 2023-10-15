@@ -26,7 +26,7 @@ const Landing = () => {
               animation: "spin-slow 10s linear infinite",
             }}
           ></div> */}
-          <div
+          {/* <div
             className="absolute z-[0] w-2/6 h-3/6 animate-pulse-slow rounded-full"
             style={{
               left: "-250px",
@@ -37,7 +37,7 @@ const Landing = () => {
               filter: "blur(80px)",
               animation: "spin 3s linear infinite",
             }}
-          ></div>
+          ></div> */}
         </Fade>
       </div>
       <div data-aos="fade-up" data-aos-duration="1000">
