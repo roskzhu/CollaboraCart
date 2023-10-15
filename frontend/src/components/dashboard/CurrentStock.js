@@ -6,14 +6,14 @@ import ReactApexChart from "react-apexcharts";
 function CurrentStockCard() {
   const getChartOptions = () => {
     return {
-      series: [52.8, 26.8, 20.4],
-      colors: ["#1C64F2", "#16BDCA", "#9061F9"],
+      series: [52.8, 22.8],
+      colors: ["#2AC58E", "#928DDF",],
       chart: {
         height: 420,
         width: "100%",
         type: "pie",
       },
-      labels: ["Item1", "Item2", "Item3"], // Updated labels
+      labels: ["Sustainably Sourced Stock", "Non-Sustainably Sourced Stock"], // Updated labels
       plotOptions: {
         pie: {
           labels: {
@@ -37,7 +37,8 @@ function CurrentStockCard() {
 
   return (
     <div className="flex-initial px-10 shadow-md container-sm mx-auto">
-      <h2 className="font-bold text-2xl p-4">Inventory</h2>{" "}
+      <h2 className="font-bold text-2xl p-3">Your Sustainability Score:</h2>{" "}
+      <h2 className="font-bold text-4xl px-3">7</h2>{" "}
       {/* Updated title */}
       <div className="p-4">
         <ReactApexChart

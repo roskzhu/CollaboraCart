@@ -30,8 +30,31 @@ const NavBar = () => {
           {/* Desktop navigation */}
           <nav className="hidden md:flex md:grow">
             {/* Desktop sign in links */}
-            <ul className="flex grow justify-end flex-wrap items-center">
-              <li>
+            <ul className="flex text-left grow justify-between flex-wrap items-center">
+              <li class="">
+                <Link to="http://localhost:3000/"
+                  className="text-2xl md:text-2xl font-extrabold leading-tighter tracking-tighter mb-8"
+                  data-aos="zoom-y-out"
+                >
+                  Collabora
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
+                    Cart
+                  </span>
+                </Link>
+
+                
+              </li>
+              <li className = "mr-auto">
+                <Link
+                  to="/dashboard"
+                  className="text-lg text-left text-gray-600 hover:text-gray-900 px-12 py-3 flex transition duration-150 ease-in-out rounded-full"
+                >
+                  Dashboard
+                </Link>
+              </li>
+            </ul>
+            <ul className="flex grow justify-end flex-wrap items-center">          
+              <li className = "mr-4">
                 <Link
                   to="/signin"
                   className="text-lg text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out rounded-full"
@@ -39,7 +62,7 @@ const NavBar = () => {
                   Sign in
                 </Link>
               </li>
-              <li>
+              <li className = "mr-4">
                 <Link
                   to="/signup"
                   className="text-lg text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 px-5 py-2 flex items-center transition duration-150 ease-in-out ml-3 rounded-full"
