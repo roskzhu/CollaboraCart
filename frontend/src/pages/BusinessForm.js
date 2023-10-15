@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const BusinessForm = () => {
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -30,6 +31,7 @@ const BusinessForm = () => {
 
     const result = await response.json();
     console.log(result);
+    navigate("/dashboard");
   };
 
   useEffect(() => {

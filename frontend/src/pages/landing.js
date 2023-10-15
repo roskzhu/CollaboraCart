@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Hero from "../components/hero";
-import NavBar from "../components/ui/navbar";
+import LandingNavbar from "../components/ui/LandingNavbar";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Fade from "react-reveal/Fade";
@@ -41,7 +41,7 @@ const Landing = () => {
         </Fade>
       </div>
       <div data-aos="fade-up" data-aos-duration="1000">
-        <NavBar />
+        <LandingNavbar />
         <Hero />
       </div>
     </>
