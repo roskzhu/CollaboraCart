@@ -10,7 +10,8 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 CORS(app)
 
-PAYBILT_API_URL = "https://sandbox.pp.paybilt.com/api/v2/payment/eTransfer/"  # The Paybilt API URL for the sandbox environment
+# The Paybilt API URL for the sandbox environment
+PAYBILT_API_URL = "https://sandbox.pp.paybilt.com/api/v2/payment/eTransfer/"
 
 
 # Business Database setup
@@ -152,10 +153,10 @@ def call_paybilt_api():
         "accept": "application/json",
         "Content-Type": "application/json",
         "Authorization": f"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2NDQ5MWY2MjdjM2FhZWQ2ZDg3OTA4MGUiLCJFbnYiOiJzYW5kYm94IiwiQ3JlYXRlRGF0ZVRpbWUiOiIyMDIzLTEwLTEzIDE2OjI3OjIwLjAxNTg5MSIsIkhhc1Nlc3Npb25UaW1lT3V0IjpmYWxzZSwiU2Vzc2lvblRpbWVJbkhvdXJzIjo0MzgwMCwiU2l0ZUlkIjoxODQsImlhdCI6MTY5NzIxNDQ0MCwiZXhwIjoxODU0ODk0NDQwLCJpc3MiOiJNZXJjaGFudEFwaSBJc3N1ZXIiLCJhdWQiOiJNZXJjaGFudEFwaSJ9.dJP2h4BcQbyq1GSes1S5x7C0TS41LEXg-vap_6Ousp8"
-    }   
+    }
 
     # Make a POST request to the Paybilt API
-    try: 
+    try:
         response = requests.post(PAYBILT_API_URL, json=data, headers=headers)
         print(response.text)
 
