@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function WelcomeBanner() {
-  const [companyName, setCompanyName] = useState("Business Name");
+  const [companyName, setCompanyName] = useState("");
 
   useEffect(() => {
     // Fetch the most recent company name when the component mounts
@@ -30,7 +30,7 @@ function WelcomeBanner() {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-200 to-purple-100 p-6 sm:p-6 rounded-2xl overflow-hidden mb-8">
+    <div className="bg-gradient-to-r from-blue-200 to-purple-100 p-6 sm:p-6 rounded-2xl overflow-hidden mb-8 max-w-6xl mx-auto">
       <h1 className="text-xl md:text-3xl text-slate-800 font-bold mb-1">
         {`${getGreeting()}, ${companyName}. 👋`}
       </h1>
