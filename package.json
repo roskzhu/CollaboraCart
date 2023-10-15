@@ -7,15 +7,19 @@
     "http-proxy": "^1.18.1",
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
-    "react-chartjs-2": "^5.2.0"
+    "react-chartjs-2": "^5.2.0",
+    "react-scripts": "4.0.3"
   },
   "name": "collaboracart",
-  "description": "<div align=\"center\">\r     <div id=\"user-content-toc\">\r       <ul>\r           <summary><h1 style=\"display: inline-block; margin-bottom:0px\">CollaboraCart</h1></summary>\r       </ul>\r     </div>\r     <h3>A Collaborative Supply Ordering Application</h3>\r     <br>\r </div>",
+  "description": "<div align=\"center\">\r <div id=\"user-content-toc\">\r <ul>\r <summary><h1 style=\"display: inline-block; margin-bottom:0px\">CollaboraCart</h1></summary>\r </ul>\r </div>\r <h3>A Collaborative Supply Ordering Application</h3>\r <br>\r </div>",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "keywords": [],
   "author": "",
