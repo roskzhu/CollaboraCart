@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const navigate = useNavigate();
   const [top, setTop] = useState(true);
 
-  // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
     window.scrollY > 10 ? setTop(false) : setTop(true);
   };
@@ -18,71 +16,42 @@ const NavBar = () => {
 
   return (
     <header
-      className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${
-        !top ? "bg-white backdrop-blur-sm shadow-lg" : ""
+      className={`fixed w-full z-30 bg-opacity-70 transition duration-300 ease-in-out ${
+        !top ? "bg-white backdrop-blur-sm rounded-xl w-full" : ""
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Site branding */}
-          <div className="shrink-0 mr-4">{/* <Logo /> */}</div>
+          <div className="flex-shrink-0 mr-4">
+            {/* <Logo /> */}
+            <Link
+              to="/"
+              className="text-2xl md:text-2xl font-extrabold leading-tighter tracking-tighter"
+            >
+              Collabora
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
+                Cart
+              </span>
+            </Link>
+          </div>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex md:grow">
-            {/* Desktop sign in links */}
-            <ul className="flex text-left grow justify-between flex-wrap items-center">
-              <li class="">
-                <Link to="http://localhost:3000/"
-                  className="text-2xl md:text-2xl font-extrabold leading-tighter tracking-tighter mb-8"
-                  data-aos="zoom-y-out"
-                >
-                  Collabora
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-800">
-                    Cart
-                  </span>
-                </Link>
+          <nav className="hidden md:flex space-x-4">
+            <Link
+              to="/dashboard"
+              className="text-lg text-gray-600 hover:text-gray-900 px-5 py-3 transition duration-150 ease-in-out rounded-full"
+            >
+              Dashboard
+            </Link>
 
-                
-              </li>
-              <li className = "mr-auto">
-                <Link
-                  to="/dashboard"
-                  className="text-lg text-left text-gray-600 hover:text-gray-900 px-12 py-3 flex transition duration-150 ease-in-out rounded-full"
-                >
-                  Dashboard
-                </Link>
-              </li>
-            </ul>
-            <ul className="flex grow justify-end flex-wrap items-center">          
-              <li className = "mr-4">
-                <Link
-                  to="/signin"
-                  className="text-lg text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out rounded-full"
-                >
-                  Sign in
-                </Link>
-              </li>
-              <li className = "mr-4">
-                <Link
-                  to="/signup"
-                  className="text-lg text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 px-5 py-2 flex items-center transition duration-150 ease-in-out ml-3 rounded-full"
-                >
-                  <span>Sign up</span>
-                  <svg
-                    className="w-3 h-3 fill-current text-white shrink-0 ml-2 -mr-1"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z"
-                      fillRule="nonzero"
-                    />
-                  </svg>
-                </Link>
-              </li>
-            </ul>
+            <Link
+              to="/ItemSubmission"
+              className="text-lg text-gray-600 hover:text-gray-900 px-5 py-3 transition duration-150 ease-in-out rounded-full"
+            >
+              Order
+            </Link>
           </nav>
-
           {/* <MobileMenu /> */}
         </div>
       </div>

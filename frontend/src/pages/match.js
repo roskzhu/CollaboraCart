@@ -7,18 +7,20 @@ import MoneySaved from "../components/matched_results/MoneySaved";
 import MatchedResults from "../components/matched_results/Results";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import Fade from 'react-reveal/Fade';
-
+import Fade from "react-reveal/Fade";
 
 const MatchPage = () => {
   const location = useLocation();
+  const formData = location.state;
   const [optimalMatch, setOptimalMatch] = useState(null);
+
+  console.log("Received formData in MatchPage:", formData);
 
   useEffect(() => {
     // fetch matches for businesses
     const fetchOptimalMatch = async () => {
       try {
-        const payload = JSON.stringify(location.state);
+        const payload = formData;
         console.log("Sending payload:", payload); // Logging the payload
 
         const response = await fetch("http://127.0.0.1:5000/FindOptimalMatch", {
@@ -131,7 +133,7 @@ const MatchPage = () => {
               {/* Add more display fields as required */}
             </div>
           ) : (
-            <MatchedResults />
+            <MatchedResults formData={formData} />
           )}
         </div>
         

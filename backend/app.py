@@ -7,8 +7,8 @@ import requests
 from utils.matching import find_optimal_match
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
-# CORS(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app)
 
 PAYBILT_API_URL = "https://sandbox.pp.paybilt.com/api/v2/payment/eTransfer/"  # The Paybilt API URL for the sandbox environment
 
@@ -78,6 +78,26 @@ def submit_item():
     return jsonify(response), 200
 
 
+@app.route('/GetLatestBusiness', methods=['GET'])
+def get_latest_business():
+    conn_business = sqlite3.connect('businesses.db')
+    c_business = conn_business.cursor()
+
+    # Get the most recent business data
+    c_business.execute(
+        'SELECT * FROM submissions ORDER BY rowid DESC LIMIT 1')
+    result = c_business.fetchone()
+    conn_business.close()
+
+    if result:
+        keys = ["company_name", "business_sector",
+                "location", "email", "employee_count"]
+        business_data = dict(zip(keys, result))
+        return jsonify(business_data), 200
+    else:
+        return jsonify({"error": "No business found"}), 404
+
+
 @app.route('/GetBusinessInfo', methods=['GET'])
 def get_business_info():
     company_name = request.args.get('company_name')
@@ -121,7 +141,6 @@ def get_optimal_match():
         return response, 200
 
 
-
 @app.route('/paybilt/api/v2/payment/OnlineBanking', methods=['POST'])
 def call_paybilt_api():
     data = request.get_json()
@@ -150,5 +169,23 @@ def call_paybilt_api():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route('/GetMostRecentBusiness', methods=['GET'])
+def get_most_recent_business():
+    conn_business = sqlite3.connect('businesses.db')
+    c_business = conn_business.cursor()
+
+    # Get the most recent company name
+    c_business.execute(
+        'SELECT company_name FROM submissions ORDER BY rowid DESC LIMIT 1')
+    result = c_business.fetchone()
+    conn_business.close()
+
+    if result:
+        return jsonify({"company_name": result[0]}), 200
+    else:
+        return jsonify({"error": "No company found"}), 404
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+    app.run(host='127.0.0.1', port=5000)
