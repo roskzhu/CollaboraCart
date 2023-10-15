@@ -24,7 +24,7 @@ const Dashboard = () => {
       <div className="w-full max-w-5xl p-5 pb-10 mx-auto gap-5 columns-2 space-y-5">
         <PricingTrendsCard />
         <CurrentStockCard />
-        <PortfolioCard />
+        <PortfolioCard/>
         <TransactionHistoryCard />
       </div>
       <div>
