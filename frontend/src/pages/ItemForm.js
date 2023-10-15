@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const ItemForm = () => {
   const [businessInfo, setBusinessInfo] = useState({});
@@ -75,8 +77,16 @@ const ItemForm = () => {
     }
   };
 
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
+
   return (
-    <div className="bg-white h-screen flex flex-col justify-center items-center font-inter">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      className="bg-white h-screen flex flex-col justify-center items-center font-inter"
+    >
       <h1 className="text-3xl text-black font-bold mb-4">Need another item?</h1>
       <p className="text-gray-500 text-base">
         Fill in the form and we'll connect
