@@ -38,7 +38,7 @@ function MoneySaved() {
   };
 
   return (
-    <div className="max-w-lg w-full bg-white rounded-lg shadow p-4 md:p-6 bg-gradient-to-br from-blue-700 to-blue-400">
+    <div className="max-w-lg w-full bg-white rounded-2xl shadow p-4 md:p-6 bg-gradient-to-br from-blue-700 to-blue-400">
       <div className="flex justify-between mb-5">
         <div className="pt-40 pb-24">
           <h5 className="text-center leading-none text-8xl font-bold text-white pb-2">
@@ -68,9 +68,7 @@ function MoneySaved() {
             to="/dashboard"
             className="uppercase text-sm font-semibold flex items-center rounded-lg text-white hover:text-blue-800 hover:bg-gray-100 px-3 py-2"
           >
-            <Link to="/dashboard">
-            Back to Dashboard
-            </Link>
+            <Link to="/dashboard">Back to Dashboard</Link>
             <svg className="w-2.5 h-2.5 ml-1.5" viewBox="0 0 6 10">
               <path
                 stroke="currentColor"

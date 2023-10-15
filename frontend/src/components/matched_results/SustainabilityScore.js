@@ -66,7 +66,7 @@ function SustainabilityScore() {
   };
 
   return (
-    <div className="flex-initial px-10 py-5 rounded-lg shadow-md container-sm mx-auto ">
+    <div className="flex-initial px-10 py-5 rounded-2xl shadow-md container-sm mx-auto ">
       <h2 className="font-bold text-3xl p-4 bg-clip-text text-transparent bg-gradient-to-r from-green-800 to-green-600">
         Sustainability Score
       </h2>{" "}
