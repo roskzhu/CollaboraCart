@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const InventoryTable = () => {
   const initialData = [
-    { item: "Dark Roast Coffee Beans", category: "Beverages", quantity: 100 },
+    { item: "Dark Roast Coffee Beans", category: "Beverages", quantity: 27 },
     {
       item: "Coffee Cups",
       category: "Disposable Serving Supplies",
@@ -19,7 +19,7 @@ const InventoryTable = () => {
     {
       item: "Espresso Machine Cleaning Tablets",
       category: "Cleaning Items",
-      quantity: 30,
+      quantity: 12,
     },
     { item: "Green Tea Bags", category: "Tea", quantity: 200 },
     { item: "Almond Milk", category: "Beverage Ingredients", quantity: 50 },
