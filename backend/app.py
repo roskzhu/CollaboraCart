@@ -1,6 +1,7 @@
+import sqlite3
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import sqlite3
 import requests
 
 from utils.matching import find_optimal_match
